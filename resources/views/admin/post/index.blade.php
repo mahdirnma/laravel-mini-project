@@ -27,7 +27,12 @@
             <td>{{$post->id}}</td>
             <td>{{$post->title}}</td>
             <td>{{$post->body}}</td>
-            <td>{{$post->category_id}}</td>
+            <td>
+                @foreach($categories as $category)
+                {{$post->category_id==$category->id?$category->title:""}}
+                @endforeach
+            </td>
+
             <td> <form action="/admin/post/{{$post->id}}/update" method="post">
                     @csrf
                     @method("post")
